@@ -14,15 +14,15 @@ struct ChessBoard {
 impl fmt::Debug for ChessBoard {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         for row in 0..BOARD_DIMENSION.1 {
-            let chars: Vec<String> = self.board[row]
+            f.write_str(&self.board[row]
                 .into_iter()
                 .map(|p| match *p {
                     Some(piece) => piece.letter.to_string(),
                     None => '.'.to_string(),
                 })
-                .collect();
-            f.write_str(&chars.join(" ")).unwrap();
-            f.write_str(&"\n".to_string()).unwrap();
+                .collect::<Vec<String>>()
+                .join(" "))?;
+            f.write_str(&"\n".to_string())?;
         }
         Ok(())
     }
