@@ -149,7 +149,7 @@ impl ChessBoard {
     }
 
     pub fn piece_at_pos(&self, rank: usize, file: usize) -> Option<PieceType> {
-        if rank >= 8 || file >=8 {
+        if rank >= 8 || file >= 8 {
             panic!("Position must be within (0,0) to (7,7).")
         }
         self[rank][file].piece
